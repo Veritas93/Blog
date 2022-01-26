@@ -8,11 +8,11 @@ def init_db
 	@db = SQLite3::Database.new 'leprozorium.db'
 	@db.results_as_hash = true
 end
-
+ # before вызывается каждый раз при перезагрузке страницы
 before do 
 	init_db
 end
-
+ # инициализация базы данных
 configure do
 	init_db
 	@db.execute 'CREATE TABLE IF NOT EXISTS Posts
@@ -22,7 +22,7 @@ configure do
 	 content TEXT
 	  )'
 end
-	
+ # создание базы данных если такая не существует	
 
 	
 
