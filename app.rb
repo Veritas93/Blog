@@ -29,13 +29,21 @@ end
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
 end
-
+ # обработчик  get запроса /new_post
+ # (браузер получает страницу с сервера)
 get '/new_post' do
   erb :new
 end
-
+ # обработчик  post запроса /new_post
+ # (браузер отправляет данные на  сервер)
 post '/new_post' do
+	# получаем переменную из post запроса
   @content = params[:content]
+
+  if @content.length <= 0
+  	@error = 'Введите текст'
+  	return erb :new
+  end
 
   erb "You typed: #{@content}"
 end
