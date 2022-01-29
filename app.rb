@@ -26,9 +26,9 @@ end
 
 	
 
-get '/' do
+get '/posts' do
 	# список постов из БД
-	results = @db.execute 'select * from Posts order by id desc'
+	@results = @db.execute 'select * from Posts order by id desc'
 	erb :index
 end
  # обработчик  get запроса /new_post
