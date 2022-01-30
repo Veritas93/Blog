@@ -7,6 +7,16 @@
 </p>
 <br />
 <h4> Comments: </h4>
+
+<% @comments.each do |comment| %>
+	<br />
+	<p>
+		<%= comment['content'] %>
+		<br />
+		Added at <%= comment['created_date'] %>
+	</p>
+	<hr />
+<% end %>
 <p>		
 	<form action="/details/<%= @row['id'] %>" method="POST">
 	  <textarea name="content" class="form-control" rows="6" placeholder="Type comment text here"></textarea>
